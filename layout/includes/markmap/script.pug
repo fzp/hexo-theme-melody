@@ -1,0 +1,32 @@
+<script src="https://cdn.jsdelivr.net/npm/d3@6"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view"></script>
+script(src="https://cdn.jsdelivr.net/npm/d3@6")
+script(src="https://cdn.jsdelivr.net/npm/markmap-view")
+script(src="https://cdn.jsdelivr.net/npm/markmap-lib/dist/browser/index.min.js")
+script.
+  document.getElementById("markmap").style.height = (parseInt(document.documentElement.clientHeight) * 0.99) + "px";
+  const markdown = document.getElementById("mm").innerHTML;
+  console.log(markdown);
+  console.log(window);
+  const transformer = new window.markmap.Transformer();
+  const {
+      root,
+      features
+  } = transformer.transform(markdown);
+  const {
+      styles,
+      scripts
+  } = transformer.getUsedAssets(features);
+
+  const {
+      Markmap,
+      loadCSS,
+      loadJS
+  } = window.markmap;
+
+  if (styles) loadCSS(styles);
+  if (scripts) loadJS(scripts, {
+      getMarkmap: () => window.markmap
+  });
+
+  Markmap.create('#markmap', null, root);
