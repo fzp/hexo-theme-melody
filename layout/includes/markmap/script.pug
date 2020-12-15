@@ -6,8 +6,6 @@ script(src="https://cdn.jsdelivr.net/npm/markmap-lib/dist/browser/index.min.js")
 script.
   document.getElementById("markmap").style.height = (parseInt(document.documentElement.clientHeight) * 0.99) + "px";
   const markdown = document.getElementById("mm").innerHTML;
-  console.log(markdown);
-  console.log(window);
   const transformer = new window.markmap.Transformer();
   const {
       root,
